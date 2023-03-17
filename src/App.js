@@ -1,8 +1,8 @@
+import ToDoPage from "./Pages/ToDoPage/ToDoPage";
 
-
-function App() {
+const App = () => {
   return (
-    <></>
+    <ToDoPage></ToDoPage>
   );
 }
 
