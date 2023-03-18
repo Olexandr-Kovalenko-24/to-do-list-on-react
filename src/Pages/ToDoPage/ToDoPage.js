@@ -7,7 +7,6 @@ const ToDoPage = () => {
     const [taskList, setTaskList] = useState([]);
     
     const mapList = () => {
-        console.log(taskList)
         return taskList.map(elem => <ToDoItem text={elem.body} key={elem.id} id={elem.id} deleteCallback={deleteItem} />);
     }
 
@@ -25,12 +24,14 @@ const ToDoPage = () => {
     }
 
     return (
+        <main className={styles.main}>
         <section className={styles.section}>
-            <ToDoForm sendDataToParent={addNewItem} />
+            <ToDoForm sendDataToParent={addNewItem} setTaskList={setTaskList} />
             <ul>
                 {mapList()}
             </ul>
         </section>
+        </main>
     );
 }
 

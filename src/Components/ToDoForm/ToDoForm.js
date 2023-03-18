@@ -7,7 +7,7 @@ const ToDoForm = (props) => {
     const [isInputValid, setIsInputValid] = useState(false);
 
     const changeHandler = ({ target: { value } }) => {
-        if (value.includes(' ')) {
+        if (!value.trim()) {
             setIsInputValid(false)
         } else {
             setIsInputValid(true)
@@ -16,20 +16,28 @@ const ToDoForm = (props) => {
     }
 
     const submitHandler = (event) => {
-        if (task) {
-            event.preventDefault();
+        if (task.trim()) {
             props.sendDataToParent(task);
-            setTask('')
-        } else {
-            event.preventDefault();
         }
+        event.preventDefault();
+        setTask('')
         setIsInputValid(false);
+    }
+
+    const cleanInput = () => {
+        setTask('')
+    }
+
+    const deleteAll = () => {
+        setTask('')
+        props.setTaskList([])
     }
 
     const cnames = cx([styles.input], {
         [styles.valid]: isInputValid,
         [styles.invalid]: !isInputValid
     });
+
     return (
         <form onSubmit={submitHandler}>
             <input
@@ -39,7 +47,9 @@ const ToDoForm = (props) => {
                 name='task'
                 onChange={changeHandler}
                 className={cnames} />
-            <button>Add to list</button>
+            <button>Add task</button>
+            <button onClick={cleanInput}>Clean</button>
+            <button onClick={deleteAll}>Delete all</button>
         </form>
     );
 }
