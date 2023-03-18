@@ -1,7 +1,22 @@
 .main
-    display: flex
-    flex-direction: row
-    justify-content: center
+    background-image: url('../../../images/back.jpeg')
+    background-size: 100%
+    background-repeat: repeat-y
+    width: 100%
+    min-height: 100vh
+    box-sizing: border-box
+    margin: 0 auto
+    padding: 15vh 20vw 0vh 20vw
+    font-size: 16px
 
-    .section
-        background-color: aqua
+    .todo-part
+        display: flex
+        flex-direction: column
+        justify-content: center
+        -webkit-box-shadow: 0px 0px 11px 4px rgba(255,173,173,0.5)
+        box-shadow: 0px 0px 11px 4px rgba(255, 173, 173, 0.5)
+
+        .tasks
+            background-color: rgb(245, 220, 151)
+            border: 2px solid rgb(243, 209, 117)
+            border-radius: 5px

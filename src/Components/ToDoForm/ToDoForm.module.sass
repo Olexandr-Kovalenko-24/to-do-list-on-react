@@ -1,14 +1,44 @@
-.input 
-    height: 2em
-    width: 25vw
+.form
+    display: flex
+    flex-direction: row  
+    justify-content: space-between
 
-    &:focus
-        outline: none
+    .input 
+        height: 2em
+        flex-grow: 1
+        border-radius: 5px
+        color: rgb(41, 80, 58)
+        font-weight: 500
+        font-size: 16px
+        padding: 3px
 
-.valid 
-    border: 2px solid green
-    background-color: rgb(188, 238, 188)
+        &::placeholder
+            color: rgb(85, 62, 35)
+            font-weight: 500
+            font-size: 16px
 
-.invalid 
-    border: 2px solid red
-    background-color: lightpink
+        &:focus
+            outline: none
+
+    .valid 
+        border: 3px solid rgb(28, 146, 79)
+        background-color: rgba(188, 238, 188)
+
+    .invalid 
+        border: 3px solid rgb(206, 108, 108)
+        background-color: lightpink
+
+
+    .buttons
+        display: flex
+        flex-direction: row
+
+        button
+            cursor: pointer
+            color: rgb(50, 87, 75)
+            font-size: 16px
+            font-weight: 500
+            border: 3px solid rgb(97, 160, 140)
+            border-radius: 5px
+            background-color: #bceedf
+

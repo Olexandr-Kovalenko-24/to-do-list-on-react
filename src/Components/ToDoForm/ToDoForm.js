@@ -39,7 +39,7 @@ const ToDoForm = (props) => {
     });
 
     return (
-        <form onSubmit={submitHandler}>
+        <form onSubmit={submitHandler} className={styles.form}>
             <input
                 type='text'
                 placeholder='type next task'
@@ -47,9 +47,11 @@ const ToDoForm = (props) => {
                 name='task'
                 onChange={changeHandler}
                 className={cnames} />
-            <button>Add task</button>
-            <button onClick={cleanInput}>Clean</button>
-            <button onClick={deleteAll}>Delete all</button>
+            <section className={styles.buttons}>
+                <button>Add task</button>
+                <button onClick={cleanInput}>Clean</button>
+                <button onClick={deleteAll}>Delete all</button>
+            </section>
         </form>
     );
 }

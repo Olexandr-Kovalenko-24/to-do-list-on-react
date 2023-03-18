@@ -1,4 +1,5 @@
 import React from 'react';
+import styles from './ToDoItem.module.sass'
 
 const ToDoItem = (props) => {
 
@@ -8,7 +9,13 @@ const ToDoItem = (props) => {
     }
 
     return (
-        <li>{props.text} <button onClick={deleteTask}>X</button></li>
+        <li>
+            <div contentEditable="true" onInput={e => e.currentTarget.textContent} title='Edit task'>
+                {props.text}
+            </div>
+            <button onClick={deleteTask}>X</button>
+            {/* <button onClick={editTask}>Edit</button> */}
+        </li>
     );
 }
 
