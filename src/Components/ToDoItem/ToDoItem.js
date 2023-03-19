@@ -20,15 +20,16 @@ const ToDoItem = (props) => {
         statusCallback(id, event.target.value);
     }
 
-    // const cnames = cx([styles.input], {
-    //     [styles.valid]: props.status,
-    //     [styles.invalid]: !isInputValid
-    // });
+    const cnames = cx({
+        [styles.process]: props.status === "In process",
+        [styles.done]: props.status === "Done task"
+    });
 
     return (
         <li>
             <article className={styles.task}>
                 <EdiText
+                    className={cnames}
                     type='text'
                     value={props.text}
                     onSave={editItem}
