@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './ToDoItem.module.sass'
+import EdiText from 'react-editext'
 
 const ToDoItem = (props) => {
 
@@ -8,13 +9,21 @@ const ToDoItem = (props) => {
         deleteCallback(id);
     }
 
+    const editItem = (value) => {
+        const { id, editCallvack } = props;
+        editCallvack(id, value);
+    }
+
     return (
         <li>
-            <div contentEditable="true" onInput={e => e.currentTarget.textContent} title='Edit task'>
-                {props.text}
-            </div>
-            <button onClick={deleteTask}>X</button>
-            {/* <button onClick={editTask}>Edit</button> */}
+            <article className={styles.task}>
+                <EdiText
+                    type='text'
+                    value={props.text}
+                    onSave={editItem}
+                />
+                <button onClick={deleteTask} className={styles.delete}></button>
+            </article>
         </li>
     );
 }
