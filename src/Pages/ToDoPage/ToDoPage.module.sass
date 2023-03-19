@@ -14,13 +14,28 @@
         color: rgb(119, 99, 43)
         font-size: 2em
 
-
     .todo-part
         display: flex
         flex-direction: column
         justify-content: center
         -webkit-box-shadow: 0px 0px 11px 4px rgba(255,173,173,0.5)
         box-shadow: 0px 0px 11px 4px rgba(255, 173, 173, 0.5)
+
+        .buttons
+            display: flex
+            flex-direction: row
+            justify-content: space-between
+
+            button
+                flex-grow: 1
+                flex-basis: 0
+                cursor: pointer
+                color: rgb(97, 62, 30)
+                font-size: 16px
+                font-weight: 500
+                border: 3px solid rgb(126, 96, 69)
+                border-radius: 5px
+                background-color: #b99272
 
         .tasks
             background-color: rgb(245, 220, 151)

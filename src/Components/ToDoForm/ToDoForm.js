@@ -29,8 +29,11 @@ const ToDoForm = (props) => {
     }
 
     const deleteAll = () => {
-        setTask('')
-        props.setTaskList([])
+        let res = window.confirm('Are you sure that you want to delete all tasks?')
+        if(res){
+            setTask('')
+            props.setTaskList([])
+        }
     }
 
     const cnames = cx([styles.input], {
