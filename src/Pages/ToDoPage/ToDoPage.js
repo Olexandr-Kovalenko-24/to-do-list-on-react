@@ -30,23 +30,31 @@ const ToDoPage = () => {
     }
 
     const editItem = (id, data) => {
-        const item = taskList.filter(obj => obj.id === id)
-        item.forEach(task => task.body = data)
-        setTaskList([...taskList]);
+        const newList = taskList.map(obj => {
+            if(obj.id === id){
+                obj.body = data
+            }
+            return obj
+        })
+        setTaskList(newList);
     }
 
     const changeStatus = (id, data) => {
-        const item = taskList.filter(obj => obj.id === id)
-        item.forEach(task => task.status = data)
-        setTaskList([...taskList]);
+        const newList = taskList.map(obj => {
+            if(obj.id === id){
+                obj.status = data
+            }
+            return obj
+        })
+        setTaskList(newList);
     }
 
     const statusFilter = (statusValue) => {
-        const filteredArray = taskList.filter(obj => obj.status !== statusValue)
-        filteredArray.forEach(task => task.isShow = false)
-        const yes = taskList.filter(obj => obj.status === statusValue)
-        yes.forEach(task => task.isShow = true)
-        setTaskList([...taskList]);
+        const newList = taskList.map(obj => {
+            obj.status === statusValue ? obj.isShow = true : obj.isShow = false
+            return obj
+        })
+        setTaskList(newList);
     }
 
     const notDone = () => {
@@ -62,8 +70,11 @@ const ToDoPage = () => {
     }
     
     const allTasks = () => {
-        taskList.forEach(task => task.isShow = true)
-        setTaskList([...taskList]);
+        const newList = taskList.map(obj => {
+            obj.isShow = true
+            return obj
+        })
+        setTaskList(newList);
     }
 
     return (
