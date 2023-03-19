@@ -1,4 +1,5 @@
 import React from 'react';
+import cx from 'classnames';
 import styles from './ToDoItem.module.sass'
 import EdiText from 'react-editext'
 
@@ -18,6 +19,11 @@ const ToDoItem = (props) => {
         const { id, statusCallback } = props;
         statusCallback(id, event.target.value);
     }
+
+    // const cnames = cx([styles.input], {
+    //     [styles.valid]: props.status,
+    //     [styles.invalid]: !isInputValid
+    // });
 
     return (
         <li>

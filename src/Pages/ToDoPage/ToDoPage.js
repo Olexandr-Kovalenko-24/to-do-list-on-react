@@ -41,28 +41,24 @@ const ToDoPage = () => {
         setTaskList([...taskList]);
     }
 
-    const notDone = () => {
-        const filteredArray = taskList.filter(obj => obj.status !== "Not done")
+    const statusFilter = (statusValue) => {
+        const filteredArray = taskList.filter(obj => obj.status !== statusValue)
         filteredArray.forEach(task => task.isShow = false)
-        const yes = taskList.filter(obj => obj.status === "Not done")
-        yes.forEach(task => task.isShow = true)
-        setTaskList([...taskList]);
-    }
-    
-    const inProcess = () => {
-        const filteredArray = taskList.filter(obj => obj.status !== "In process")
-        filteredArray.forEach(task => task.isShow = false)
-        const yes = taskList.filter(obj => obj.status === "In process")
+        const yes = taskList.filter(obj => obj.status === statusValue)
         yes.forEach(task => task.isShow = true)
         setTaskList([...taskList]);
     }
 
+    const notDone = () => {
+        statusFilter("Not done")
+    }
+    
+    const inProcess = () => {
+        statusFilter("In process")
+    }
+
     const done = () => {
-        const filteredArray = taskList.filter(obj => obj.status !== "Done task")
-        filteredArray.forEach(task => task.isShow = false)
-        const yes = taskList.filter(obj => obj.status === "Done task")
-        yes.forEach(task => task.isShow = true)
-        setTaskList([...taskList]);
+        statusFilter("Done task")
     }
     
     const allTasks = () => {
