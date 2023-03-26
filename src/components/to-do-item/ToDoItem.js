@@ -2,10 +2,16 @@ import React from 'react';
 import cx from 'classnames';
 import styles from './ToDoItem.module.sass'
 import EdiText from 'react-editext'
+import {} from '../../actions/actionCreators';
 
-const ToDoItem = ({ id, execution, deleteCallback, editCallvack, executionCallback, text }) => {
+const ToDoItem = ({deleteCallback, 
+                    editCallvack,
+                    executionCallback,
+                    title, 
+                    execution,
+                    id}) => {
 
-    const deleteTask = () => {
+    const deleteItem = () => {
         deleteCallback(id);
     }
 
@@ -21,17 +27,17 @@ const ToDoItem = ({ id, execution, deleteCallback, editCallvack, executionCallba
         [styles.process]: execution === "in process",
         [styles.done]: execution === "done"
     });
-
+    
     return (
         <li>
             <article className={styles.task}>
                 <EdiText
                     className={cnames}
                     type='text'
-                    value={text}
+                    value={title}
                     onSave={editItem}
                 />
-                <button onClick={deleteTask} className={styles.delete}></button>
+                <button onClick={deleteItem} className={styles.delete}></button>
                 <select id="execution" onChange={changeExecution} className={styles.execution} >
                   <option value={execution}>{execution.toLowerCase()}</option>
                   <option value="not done">not done</option>

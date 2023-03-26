@@ -1,8 +1,12 @@
 import React, { useState } from 'react';
+import { connect } from 'react-redux';
 import cx from 'classnames';
 import styles from './ToDoForm.module.sass';
+import { addTask, deleteAllTask } from '../../actions/actionCreators';
 
-const ToDoForm = ({ sendDataToParent, setTaskList }) => {
+const ToDoForm = ({ addTask,
+                    deleteAllTask }) => {
+
     const [name, setName] = useState('');
     const [isInputValid, setIsInputValid] = useState(true);
 
@@ -14,7 +18,11 @@ const ToDoForm = ({ sendDataToParent, setTaskList }) => {
     const submitHandler = (event) => {
         event.preventDefault();
         if (name.trim()) {
-            sendDataToParent(name);
+            addTask({
+                title: name,
+                id: new Date().getTime(),
+                execution: "not done"
+            });
         }
         setName('')
         setIsInputValid(false);
@@ -28,7 +36,7 @@ const ToDoForm = ({ sendDataToParent, setTaskList }) => {
         let res = window.confirm('Are you sure that you want to delete all tasks?')
         if (res) {
             setName('')
-            setTaskList([])
+            deleteAllTask()
         }
     }
 
@@ -54,4 +62,9 @@ const ToDoForm = ({ sendDataToParent, setTaskList }) => {
     );
 }
 
-export default ToDoForm;
+const mapDispatchToProps = {
+    addTask,
+    deleteAllTask
+}
+
+export default connect(null, mapDispatchToProps)(ToDoForm);
