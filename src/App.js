@@ -1,4 +1,4 @@
-import ToDoPage from "./Pages/ToDoPage/ToDoPage";
+import ToDoPage from "./pages/to-do-page/ToDoPage";
 
 const App = () => {
   return (
